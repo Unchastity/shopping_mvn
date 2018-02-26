@@ -8,7 +8,6 @@
         <relativePath>../shopping-parent/pom.xml</relativePath>
     </parent>
     <artifactId>shopping-common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <!--<packaging>jar</packaging>-->
 
     <name>shopping-common</name>
