@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "category_second", catalog = "shopping")
+@Table(name = "category_second")
 public class CategorySecond implements Serializable {
 
     private static final long serialVersionUID = 2862506537983711071L;
@@ -24,8 +24,7 @@ public class CategorySecond implements Serializable {
             foreignKey = @ForeignKey(name = "category_second_fk_category"))
     private Category category;
 
-    @OneToMany(targetEntity = Product.class, mappedBy = "categorySecond",
-            fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Product.class, mappedBy = "categorySecond")
     private Set<Product> products = new HashSet<>();
 
     public Integer getCsid() {

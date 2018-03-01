@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "orders", catalog = "shopping")
+@Table(name = "orders")
 public class Orders implements Serializable{
 
     private static final long serialVersionUID = -6155215961274894476L;

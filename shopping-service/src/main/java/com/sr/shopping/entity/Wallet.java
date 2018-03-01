@@ -1,5 +1,8 @@
 package com.sr.shopping.entity;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
@@ -7,7 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "wallet", catalog = "shopping")
+@Table(name = "wallet")
 public class Wallet implements Serializable {
 
     private static final long serialVersionUID = -1128750935366018600L;
@@ -19,7 +22,7 @@ public class Wallet implements Serializable {
     @Column(name = "money", nullable = false, scale = 2, precision = 8)
     private BigDecimal money;
 
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "uid", referencedColumnName = "uid",
     foreignKey = @ForeignKey(name = "wallet_fk_user"), unique = true)
     private User user;
@@ -40,9 +43,11 @@ public class Wallet implements Serializable {
         this.money = money;
     }
 
+
     public User getUser() {
         return user;
     }
+
 
     public void setUser(User user) {
         this.user = user;

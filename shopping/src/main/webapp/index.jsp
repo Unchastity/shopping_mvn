@@ -14,6 +14,6 @@
     <title>首页</title>
 </head>
 <body>
-
+    <jsp:forward page="/shopping/index"/>
 </body>
 </html>

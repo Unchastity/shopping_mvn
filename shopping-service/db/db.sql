@@ -1,5 +1,7 @@
 DROP DATABASE IF EXISTS shopping;
-CREATE DATABASE shopping;
+DROP TRIGGER IF EXISTS user_AFTER_INSERT;
+
+CREATE DATABASE IF NOT EXISTS shopping;
 USE shopping;
 
 # 系统用户
@@ -31,7 +33,7 @@ CREATE TABLE category_second (
   cid     INT          NOT NULL
   COMMENT '二级类目外键，关联一级类目ID',
   PRIMARY KEY (csid),
-  CONSTRAINT category_second_fk_category FOREIGN KEY (cid) REFERENCES category (cid)
+  CONSTRAINT category_second_fk_category FOREIGN KEY (cid) REFERENCES category (cid) ON UPDATE CASCADE
 );
 
 CREATE TABLE product (
@@ -118,7 +120,7 @@ CREATE TABLE wallet (
   uid   INT UNIQUE                     NOT NULL
   COMMENT '用户ID',
   PRIMARY KEY (wid),
-  CONSTRAINT wallet_fk_user FOREIGN KEY (uid) REFERENCES user (uid)
+  CONSTRAINT wallet_fk_user FOREIGN KEY (uid) REFERENCES user (uid) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE packet (
@@ -159,10 +161,10 @@ CREATE TABLE warn (
 );
 
 # 触发器，用户与钱包一一对应，当添加一个用户时，对应添加钱包
-DELIMITER //
-CREATE TRIGGER t_user_afterInsert
+/*DELIMITER //
+CREATE TRIGGER user_AFTER_INSERT
 AFTER INSERT ON user
 FOR EACH ROW
   INSERT INTO wallet (uid) VALUE (new.uid)
 //
-DELIMITER ;
+DELIMITER ;*/

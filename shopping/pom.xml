@@ -19,6 +19,12 @@
     <dependencies>
         <dependency>
             <groupId>com.sr.shopping</groupId>
+            <artifactId>shopping-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sr.shopping</groupId>
             <artifactId>shopping-service</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -31,12 +37,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>javax.servlet</groupId>

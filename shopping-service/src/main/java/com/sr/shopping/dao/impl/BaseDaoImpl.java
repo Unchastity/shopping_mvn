@@ -15,7 +15,6 @@ import java.util.Map;
 
 import static com.sun.tools.attach.VirtualMachine.list;
 
-@Repository
 @Transactional
 public class BaseDaoImpl<T> implements BaseDao<T> {
 

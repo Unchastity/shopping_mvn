@@ -28,6 +28,7 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.default_catalog">shopping</prop>
 
                 <prop key="hibernate.c3p0.max_size">10</prop>
                 <prop key="hibernate.c3p0.min_size">5</prop>

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
-@Table(name = "category", catalog = "shopping")
+@Table(name = "category")
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 4177071387207806002L;
@@ -31,7 +31,7 @@ public class Category implements Serializable {
             fetch = FetchType.EAGER)
     private Set<CategorySecond> categorySecondList = new HashSet<>();
 
-    @OneToMany(targetEntity = Ticket.class, mappedBy = "packet", cascade = CascadeType.REFRESH)
+    @OneToMany(targetEntity = Ticket.class, mappedBy = "packet", cascade = CascadeType.ALL)
     private Set<Ticket> tickets;
 
     public Integer getCid() {

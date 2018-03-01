@@ -29,4 +29,20 @@
         <property name="maxUploadSize" value="10475860000"/>
         <property name="maxInMemorySize" value="40960"/>
     </bean>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <mvc:mapping path="/admin/*"/>
+            <mvc:mapping path="/shopping/*"/>
+            <mvc:exclude-mapping path="/resource/*" />
+            <mvc:exclude-mapping path="/getyzm" />
+            <mvc:exclude-mapping path="/admin/login" />
+            <mvc:exclude-mapping path="/admin/tologin" />
+            <mvc:exclude-mapping path="/shopping/index" />
+            <mvc:exclude-mapping path="/shopping/login" />
+            <mvc:exclude-mapping path="/shopping/tologin" />
+            <bean class="com.sr.shopping.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

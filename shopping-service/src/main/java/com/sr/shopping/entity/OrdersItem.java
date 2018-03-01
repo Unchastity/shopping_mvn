@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "orders_item", catalog = "shopping")
+@Table(name = "orders_item")
 public class OrdersItem implements Serializable {
 
     private static final long serialVersionUID = -8621696682522862030L;

@@ -1,12 +1,14 @@
 package com.sr.shopping.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user", catalog = "shopping")
+@Table(name = "user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 6263037522236831352L;
@@ -15,10 +17,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer uid;
 
+    @NotEmpty
     @Basic
     @Column(name = "user_name", nullable = false)
     private String userName;
 
+    @NotEmpty
     @Basic
     @Column(name = "password", nullable = false)
     private String password;
@@ -55,14 +59,18 @@ public class User implements Serializable {
     @Column(name = "home_addr")
     private String homeAddr;
 
-    @OneToMany(targetEntity = Wallet.class, mappedBy = "user")
-    private Set<Wallet> wallets = new HashSet<>();
+    @OneToOne(targetEntity = Wallet.class, mappedBy = "user",
+            cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE},
+            fetch = FetchType.EAGER)
+    private Wallet wallet;
 
-    @OneToMany(targetEntity = Packet.class, mappedBy = "user")
-    private Set<Packet> packets = new HashSet<>();
+//    @OneToOne(targetEntity = Packet.class, mappedBy = "user", fetch = FetchType.EAGER)
+    @Transient
+    private Packet packet;
 
-    @OneToMany(targetEntity = Orders.class, mappedBy = "user",
-            fetch = FetchType.LAZY)
+//    @OneToMany(targetEntity = Orders.class, mappedBy = "user",
+//            fetch = FetchType.LAZY)
+    @Transient
     private Set<Orders> orders = new HashSet<>();
 
     public Integer getUid() {
@@ -153,20 +161,20 @@ public class User implements Serializable {
         this.homeAddr = homeAddr;
     }
 
-    public Set<Wallet> getWallets() {
-        return wallets;
+    public Wallet getWallet() {
+        return wallet;
     }
 
-    public void setWallets(Set<Wallet> wallets) {
-        this.wallets = wallets;
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
-    public Set<Packet> getPackets() {
-        return packets;
+    public Packet getPacket() {
+        return packet;
     }
 
-    public void setPackets(Set<Packet> packets) {
-        this.packets = packets;
+    public void setPacket(Packet packet) {
+        this.packet = packet;
     }
 
     public Set<Orders> getOrders() {

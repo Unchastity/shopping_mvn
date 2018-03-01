@@ -11,7 +11,7 @@ USE shopping;
 # TRUNCATE TABLE category;
 
 # 系统用户
-INSERT INTO admin_user VALUE ('1', 'admin', 'abc123', '50');
+INSERT INTO admin_user VALUE (1, 'admin', 'abc123', '50');
 
 # 一级类目
 INSERT INTO `category` VALUES ('1', '女装男装', '0.8', '2016-12-06 00:00:00');
